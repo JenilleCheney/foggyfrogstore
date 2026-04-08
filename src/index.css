@@ -31,3 +31,29 @@ a {
   opacity: 0.9;
 }
 
+/* Smooth alert animation */
+.alert {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Category section headers */
+section h2 {
+  letter-spacing: 0.5px;
+}
+
+/* Image placeholder */
+.card-img-top {
+  background-color: #eef4e8;
+}
+
