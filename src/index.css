@@ -57,3 +57,17 @@ section h2 {
   background-color: #eef4e8;
 }
 
+/* Search bar */
+.input-group .form-control:focus {
+  box-shadow: none;
+}
+
+.input-group.rounded-pill {
+  border: 2px solid #dee2e6;
+  transition: border-color 0.2s ease;
+}
+
+.input-group.rounded-pill:focus-within {
+  border-color: #4a7c59;
+}
+
