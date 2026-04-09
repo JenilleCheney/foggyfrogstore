@@ -7,9 +7,9 @@ import ReptileCard from "../components/ReptileCard.tsx";
 const LOGO_URL = "http://127.0.0.1:10000/devstoreaccount1/uploads/foggyfrogslogo.png";
 
 const CATEGORIES = [
-    {type: "Frog", label: "Frogs"},
-    {type: "Snake", label: "Snakes"},
-    {type: "Lizard", label: "Lizards"},
+    {types: ["frog"], label: "Frogs"},
+    {types: ["snake"], label: "Snakes"},
+    {types: ["lizard", "gecko"], label: "Lizards"},
 ];
 
 
@@ -40,7 +40,7 @@ export default function Home() {
 
     const groupedReptiles = CATEGORIES.map(cat => ({
         ...cat,
-        items: filteredReptiles.filter(r => r.type.toLowerCase() === cat.type.toLowerCase()),
+        items: filteredReptiles.filter(r => cat.types.includes(r.type.toLowerCase())),
     }));
 
     return (
@@ -50,7 +50,7 @@ export default function Home() {
                 <img
                     src={LOGO_URL}
                     alt="Foggy Frog Exotics Logo"
-                    className="mb-3"
+                    className="mb-3 rounded-4"
                     style={{maxWidth: "280px"}}
                 />
                 <h1 className="display-4 fw-bold" style={{color: "#4a7c59"}}>
@@ -93,7 +93,7 @@ export default function Home() {
 
                     {groupedReptiles.map(category => (
                         category.items.length > 0 && (
-                            <section key={category.type} className="mb-5">
+                            <section key={category.label} className="mb-5">
                                 <h2 className="fw-bold mb-3"
                                     style={{color: "#4a7c59"}}>
                                     {category.label}
@@ -110,7 +110,7 @@ export default function Home() {
 
                     {/* Show any reptiles that don't match the 3 categories */}
                     {filteredReptiles.filter(r =>
-                        !CATEGORIES.some(c => c.type.toLowerCase() === r.type.toLowerCase())
+                        !CATEGORIES.some(c => c.types.includes(r.type.toLowerCase()))
                     ).length > 0 && (
                         <section className="mb-5">
                             <h2 className="fw-bold mb-3" style={{color: "#4a7c59"}}>
@@ -119,7 +119,7 @@ export default function Home() {
                             <hr style={{borderColor: "#4a7c59", opacity: 0.3}} className="mb-4"/>
                             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                                 {filteredReptiles
-                                    .filter(r => !CATEGORIES.some(c => c.type.toLowerCase() === r.type.toLowerCase()))
+                                    .filter(r => !CATEGORIES.some(c => c.types.includes(r.type.toLowerCase())))
                                     .map(reptile => (
                                         <ReptileCard key={reptile.id} reptile={reptile}/>
                                     ))}
