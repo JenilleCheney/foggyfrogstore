@@ -9,7 +9,7 @@ export default function Layout() {
                 <nav className="navbar mb-4" style={{borderBottom: "2px solid #4a7c59"}}>
                     <div className="container-fluid">
                         <Link to="/" className="navbar-brand d-flex align-items-center gap-2">
-                            <img src={LOGO_URL} alt="Logo" style={{height: "80px", borderRadius: "8px"}} />
+                            <img src={LOGO_URL} alt="Logo" style={{height: "40px", borderRadius: "8px"}} />
                             <span className="fw-bold" style={{color: "#4a7c59"}}>Foggy Frog Exotics</span>
                         </Link>
 
